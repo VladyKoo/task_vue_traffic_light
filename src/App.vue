@@ -3,17 +3,17 @@
     <h1>Traffic light</h1>
     <div class="container">
       <router-view />
-      <Red />
+      <!-- <Red />
       <Yellow />
-      <Green />
+      <Green /> -->
     </div>
   </div>
 </template>
 
 <script>
-import Green from "./components/Green.vue";
-import Red from "./components/Red.vue";
-import Yellow from "./components/Yellow.vue";
+import Green from "./pages/Green.vue";
+import Red from "./pages/Red.vue";
+import Yellow from "./pages/Yellow.vue";
 export default {
   name: "app",
   components: {

@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Red from "../components/Red";
-import Green from "../components/Green";
-import Yellow from "../components/Yellow";
+import Red from "../pages/Red";
+import Green from "../pages/Green";
+import Yellow from "../pages/Yellow";
 
 Vue.use(Router);
 
@@ -10,7 +10,8 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: "/"
+      path: "*",
+      redirect: "/red"
     },
     {
       path: "/red",
