@@ -1,19 +1,23 @@
 <template>
   <div>
-    <div class="screen"></div>
+    <router-link
+      v-for="(name, idx) of constant.SIGNAL_NAMES"
+      :key="idx"
+      :to="`/${name}`"
+      ><Signal :name="name"
+    /></router-link>
   </div>
 </template>
 
 <script>
+import Signal from "../components/Signal";
+import mixin from "../mixins/mixin";
+
 export default {
-  name: "Green"
+  name: "green",
+  components: { Signal },
+  mixins: [mixin]
 };
 </script>
 
-<style scoped>
-.screen {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-}
-</style>
+<style scoped></style>

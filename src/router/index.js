@@ -10,22 +10,22 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: "*",
+      path: "",
       redirect: "/red"
     },
     {
       path: "/red",
-      name: "Red",
+      name: "red",
       component: Red
     },
     {
       path: "/green",
-      name: "Green",
+      name: "green",
       component: Green
     },
     {
       path: "/yellow",
-      name: "Yellow",
+      name: "yellow",
       component: Yellow
     }
   ]

@@ -3,9 +3,6 @@
     <h1>Traffic light</h1>
     <div class="container">
       <router-view />
-      <!-- <Red />
-      <Yellow />
-      <Green /> -->
     </div>
   </div>
 </template>
@@ -14,12 +11,17 @@
 import Green from "./pages/Green.vue";
 import Red from "./pages/Red.vue";
 import Yellow from "./pages/Yellow.vue";
+
 export default {
   name: "app",
   components: {
     Red,
     Green,
     Yellow
+  },
+  beforeCreate() {
+    console.log("----------app created");
+    this.$store.dispatch("setState", JSON.parse(localStorage.state));
   }
 };
 </script>
@@ -33,7 +35,9 @@ export default {
 body,
 h1,
 h2,
-p {
+p,
+a {
+  text-decoration: none;
   margin: 0;
 }
 
