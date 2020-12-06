@@ -1,8 +1,8 @@
 <template>
   <div>
     <div
-      :style="[background_color]"
       :class="[{ signal: true }, { blink: isBlink }]"
+      :style="[background_color]"
     >
       <h1 class="timer" :style="[color]" v-if="name === 'yellow'">
         {{ getTimer }}
@@ -30,7 +30,7 @@ export default {
         : false;
     },
     background_color() {
-      const opacity = this.$route.name === this.name ? 1 : 0.2;
+      const opacity = this.$route.name === this.name ? 1 : 0.12;
       const color = constant.COLOR[this.name];
 
       return { "background-color": `rgba(${color},${opacity})` };
@@ -43,10 +43,12 @@ export default {
       return { color: `rgb(${color})` };
     },
     getTimer() {
+      localStorage.state = JSON.stringify(this.$store.getters.state);
+      console.log("----------signal timer");
+      console.log(this.$store.getters.timer);
       return this.$store.getters.timer;
     }
-  },
-  created() {}
+  }
 };
 </script>
 
@@ -55,6 +57,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -76,7 +79,7 @@ export default {
     opacity: 1;
   }
   to {
-    opacity: 0;
+    opacity: 0.3;
   }
 }
 </style>

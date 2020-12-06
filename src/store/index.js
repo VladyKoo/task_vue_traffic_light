@@ -8,50 +8,36 @@ export default new Vuex.Store({
   state: {
     timer: 0,
     timerId: 0,
-    previousRoute: ""
+    previousRoute: "red",
+    isAfterUpdate: true
   },
   getters: {
     state: s => s,
     timer: s => s.timer,
     timerId: s => s.timerId,
-    previousRoute: s => s.previousRoute
+    previousRoute: s => s.previousRoute,
+    isAfterUpdate: s => s.isAfterUpdate
   },
   mutations: {
     setState(state, payload) {
-      console.log("----------mutation setState");
       state = payload;
     },
-    setPreviousRoute(state, payload) {
-      state.previousRoute = payload;
-    },
-    setTimerId(state, payload) {
-      console.log("----------mutation setTimerId");
-      state.timerId = payload;
+    setTimer(state, payload) {
+      state.timer = payload;
     },
     decrementTimer(state) {
       state.timer--;
     },
-    setTimer(state, payload) {
-      console.log("----------mutation setTimer");
-      state.timer = payload;
-    }
-  },
-  actions: {
-    setState({ commit }, payload) {
-      console.log("----------action setState");
-      if (payload) {
-        commit("setState", payload);
-      }
+    setTimerId(state, payload) {
+      state.timerId = payload;
     },
-    updateTimer({ state, commit }, { router, activRoute }) {
-      console.log("----------action updateTimer");
+    setPreviousRoute(state, payload) {
+      state.previousRoute = payload;
+    },
+    isAfterUpdate(state, payload) {
+      console.log("----------store isAfterUpdate");
 
-      if (state.timer <= 0) {
-        commit("setTimer", constant.PERIODS[activRoute]);
-        // router.push("/red");
-      }
-      localStorage.state = JSON.stringify(state);
-      commit("decrementTimer");
+      state.isAfterUpdate = payload;
     }
   }
 });

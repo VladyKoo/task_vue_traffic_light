@@ -19,9 +19,26 @@ export default {
     Green,
     Yellow
   },
-  beforeCreate() {
-    console.log("----------app created");
-    this.$store.dispatch("setState", JSON.parse(localStorage.state));
+  watch: {
+    $route(to, from) {
+      this.$store.commit("setPreviousRoute", from.name);
+    }
+  },
+  beforeMount() {
+    if (localStorage.state) {
+      let storageState = JSON.parse(localStorage.state);
+      storageState.isAfterUpdate = true;
+      console.log(storageState);
+      this.$store.commit("setState", storageState);
+      console.log("----------app created");
+    } else {
+      this.$store.commit("isAfterUpdate", false);
+      console.log("----------app isAfterUpdate false");
+    }
+
+    // localStorage.state
+    //   ? this.$store.commit("setState", JSON.parse(localStorage.state))
+    //   : this.$store.commit("isAfterUpdate", false);
   }
 };
 </script>
@@ -49,13 +66,15 @@ a {
 }
 
 .container {
-  margin: 20px auto;
-  padding: 20px;
-  width: 1000px;
-  min-height: 800px;
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px auto;
+  padding: 20px;
+  width: 400px;
+  min-height: 800px;
+  background-color: #000;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
 }
 </style>
