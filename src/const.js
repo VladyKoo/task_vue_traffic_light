@@ -11,6 +11,6 @@ export default {
     yellow: "255,255,0",
     green: "0,255,0"
   },
-  DELAY: 3000,
+  DELAY: 1000,
   BLINK_TIME: 3
 };

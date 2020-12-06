@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div
-      :class="[{ signal: true }, { blink: isBlink }]"
-      :style="[background_color]"
-    >
-      <h1 class="timer" :style="[color]" v-if="name === 'yellow'">
+    <div class="signal" :class="{ blink: doBlink }" :style="background_color">
+      <h1 class="timer" :style="color" v-if="name === 'yellow'">
         {{ getTimer }}
       </h1>
     </div>
@@ -23,29 +20,24 @@ export default {
     }
   },
   computed: {
-    isBlink() {
+    doBlink() {
       return this.$route.name === this.name &&
         this.$store.getters.timer <= constant.BLINK_TIME
         ? true
         : false;
     },
     background_color() {
-      const opacity = this.$route.name === this.name ? 1 : 0.12;
       const color = constant.COLOR[this.name];
-
+      const opacity = this.$route.name === this.name ? 1 : 0.12;
       return { "background-color": `rgba(${color},${opacity})` };
     },
     color() {
-      const color =
-        this.$route.name === this.name
-          ? "0,0,0"
-          : constant.COLOR[this.$route.name];
-      return { color: `rgb(${color})` };
+      if (this.$route.name !== "yellow") {
+        return { color: `rgb(${constant.COLOR[this.$route.name]})` };
+      }
     },
     getTimer() {
       localStorage.state = JSON.stringify(this.$store.getters.state);
-      console.log("----------signal timer");
-      console.log(this.$store.getters.timer);
       return this.$store.getters.timer;
     }
   }
@@ -64,7 +56,7 @@ export default {
 }
 .timer {
   font-size: 10rem;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: black;
   text-decoration: none;
 }

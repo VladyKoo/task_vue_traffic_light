@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import constant from "../const";
 
 Vue.use(Vuex);
 
@@ -35,8 +34,6 @@ export default new Vuex.Store({
       state.previousRoute = payload;
     },
     isAfterUpdate(state, payload) {
-      console.log("----------store isAfterUpdate");
-
       state.isAfterUpdate = payload;
     }
   }

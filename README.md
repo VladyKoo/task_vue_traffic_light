@@ -1,18 +1,15 @@
 # app
 
-> A Vue.js project
+> Приложение SPA - эмулятор светофора (Задание в корне проекта) разработанно с использованием фреймворка Vue.js и сборщика проектов Webpack
 
 ## Build Setup
 
-``` bash
-# install dependencies
+# Установка зависимостей
+
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Запуск приложения по адресу localhost:8080
 
-# build for production with minification
-npm run build
-```
+npm run start
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+![Alt](Task.pdf)

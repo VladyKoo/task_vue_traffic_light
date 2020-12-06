@@ -4,6 +4,7 @@
     <div class="container">
       <router-view />
     </div>
+    <div class="tube"></div>
   </div>
 </template>
 
@@ -24,31 +25,28 @@ export default {
       this.$store.commit("setPreviousRoute", from.name);
     }
   },
-  beforeMount() {
+  created() {
     if (localStorage.state) {
-      let storageState = JSON.parse(localStorage.state);
-      storageState.isAfterUpdate = true;
-      console.log(storageState);
-      this.$store.commit("setState", storageState);
-      console.log("----------app created");
+      const storageState = JSON.parse(localStorage.state);
+      if (
+        this.$route.name !== "yellow" &&
+        storageState.previousRoute !== "yellow"
+      ) {
+        this.$store.commit("setPreviousRoute", storageState.previousRoute);
+      }
+      this.$store.commit("setTimer", storageState.timer);
+      this.$store.commit("isAfterUpdate", true);
     } else {
       this.$store.commit("isAfterUpdate", false);
-      console.log("----------app isAfterUpdate false");
     }
-
-    // localStorage.state
-    //   ? this.$store.commit("setState", JSON.parse(localStorage.state))
-    //   : this.$store.commit("isAfterUpdate", false);
+  },
+  beforeUpdate() {
+    clearInterval(this.$store.getters.timerId);
   }
 };
 </script>
 
 <style>
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body,
 h1,
 h2,
@@ -69,12 +67,17 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
   width: 400px;
-  min-height: 800px;
   background-color: #000;
   border-radius: 50px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+}
+.tube {
+  margin: 0 auto;
+  width: 100px;
+  height: 300px;
+  background-color: #000;
 }
 </style>

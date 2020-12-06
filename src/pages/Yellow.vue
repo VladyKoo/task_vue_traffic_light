@@ -19,5 +19,3 @@ export default {
   mixins: [mixin]
 };
 </script>
-
-<style scoped></style>
