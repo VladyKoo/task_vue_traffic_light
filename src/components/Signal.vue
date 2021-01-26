@@ -50,12 +50,12 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 .timer {
-  font-size: 10rem;
+  font-size: 5rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: black;
   text-decoration: none;

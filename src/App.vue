@@ -69,15 +69,15 @@ a {
   align-items: center;
   margin: auto;
   padding: 20px;
-  width: 400px;
+  width: 200px;
   background-color: #000;
   border-radius: 50px;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
 }
 .tube {
   margin: 0 auto;
-  width: 100px;
-  height: 300px;
+  width: 50px;
+  height: 150px;
   background-color: #000;
 }
 </style>
